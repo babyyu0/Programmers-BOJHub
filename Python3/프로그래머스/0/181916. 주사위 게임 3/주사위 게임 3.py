@@ -1,20 +1,17 @@
 def solution(a, b, c, d):
-    answer = 0
-    an_map = {}
-    an_map[a] = 1 if a not in an_map else an_map[a] + 1
-    an_map[b] = 1 if b not in an_map else an_map[b] + 1
-    an_map[c] = 1 if c not in an_map else an_map[c] + 1
-    an_map[d] = 1 if d not in an_map else an_map[d] + 1
-    an_tuple = sorted(an_map.items(), key=lambda x:(-x[1], x[0]))
-    print("", an_tuple)
+    num = [a, b, c, d]
+    count = [num.count(i) for i in num]
+    #print("", count)
     
-    if an_tuple[0][1] == 4:
-        return 1111 * an_tuple[0][0]
-    elif an_tuple[0][1] == 3:
-        return (10 * an_tuple[0][0] + an_tuple[1][0]) ** 2
-    elif an_tuple[1][1] == 2:
-        return (an_tuple[0][0] + an_tuple[1][0]) * abs(an_tuple[0][0] - an_tuple[1][0])
-    elif an_tuple[0][1] == 2:
-        return an_tuple[1][0] * an_tuple[2][0]
-    
-    return an_tuple[0][0]
+    if max(count) == 4:
+        return 1111 * num[count.index(4)]
+    elif max(count) == 3:
+        return (10 * num[count.index(3)] + num[count.index(1)]) ** 2
+    elif min(count) == 2:
+        return (max(num) + min(num)) * abs(max(num) - min(num))
+    elif max(count) == 2:
+        tmp = set(num)
+        tmp.remove(num[count.index(2)])
+        return tmp.pop() * tmp.pop()
+    else:
+        return min(num)
