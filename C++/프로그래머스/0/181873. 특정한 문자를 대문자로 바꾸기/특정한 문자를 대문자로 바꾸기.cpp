@@ -4,13 +4,10 @@
 using namespace std;
 
 string solution(string my_string, string alp) {
-    string answer = "";
-    for(char c : my_string) {
+    for(auto& c : my_string) {
         if(c == alp[0]) {
-            answer += c - 32;
-        } else {
-            answer += c;
+            c -= 32;
         }
     }
-    return answer;
+    return my_string;
 }
