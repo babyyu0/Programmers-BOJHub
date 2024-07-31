@@ -9,16 +9,9 @@ def solution(cacheSize, cities):
     popped, flag = "", None
     for city in cities:
         city = city.lower()
-        flag = False
-        for i in range(len(cache)):
-            popped = cache.popleft()
-            if popped == city:
-                flag = True
-                i -= 1
-            else:
-                cache.append(popped)
-        if flag: #cache hit
+        if city in cache: #cache hit
             answer += 1
+            cache.remove(city)
         else: #cache miss
             answer += 5
             if len(cache) >= cacheSize:
