@@ -11,9 +11,8 @@ vector<int> solution(int n, int s) {
         int std, set_num;
         while(0 < s) {
             std = s / n--;
-            set_num = (std <= s) ? std : s;
-            s -= set_num;
-            answer.push_back(set_num);
+            s -= std;
+            answer.push_back(std);
         }
     }
     return answer;
