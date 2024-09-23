@@ -13,7 +13,7 @@ int solution(vector<vector<int>> routes) {
     for(auto& route : routes) {
         flag = false;
         for(int i = 0; i < cams.size(); i++) {
-            if(max(route[0], cams[i][0]) <= min(route[1], cams[i][1])) {
+            if(route[0] <= cams[i][1]) {
                 flag = true;
                 cams[i][0] = max(route[0], cams[i][0]);
                 cams[i][1] = min(route[1], cams[i][1]);
